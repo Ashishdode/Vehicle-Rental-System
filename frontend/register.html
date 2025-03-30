@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="img/logo.png" alt="Car Logo" class="navbar-logo">
+            <h1>Rent-Ease</h1>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="nav-link">Login</a>
+            <a href="register.html" class="nav-link active">Register</a>
+        </div>
+        <div class="navbar-toggle" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- Register Form (Directly Visible) -->
+    <div class="login-overlay" style="display: flex;">
+        <div class="login-card">
+            <div class="login-left">
+                <img src="img/card2.jpg" alt="Register Image">
+            </div>
+            <div class="login-right">
+                <h1>Registration</h1>
+                <div id="error" class="error" style="display: none;"></div>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role:</label>
+                        <select id="role" name="role">
+                            <option value="USER">User</option>
+                            <option value="ADMIN">Admin</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                </form>
+                <p>Already have an account? <a href="index.html">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Rent-Ease. All rights reserved.</p>
+        <p><a href="register.html">Contact Us</a></p>
+    </footer>
+
+    <script src="js/register.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
