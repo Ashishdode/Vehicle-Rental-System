@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="img/logo.png" alt="Car Logo" class="navbar-logo">
+            <h1>Rent-Ease</h1>
+        </div>
+        <div class="navbar-menu">
+            <a href="vehicles.html" class="nav-link active">Vehicles</a>
+            <a href="my-bookings.html" class="nav-link">My Bookings</a>
+            <a href="#" class="nav-link" onclick="logout()">Logout</a>
+        </div>
+        <div class="navbar-toggle" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <div class="container">
+        <h1>Vehicles</h1>
+        <div id="vehicleList" class="vehicle-list"></div>
+        <div id="noVehiclesMessage" class="message">No vehicles available at the moment.</div>
+        <div id="bookingForm" class="booking-form" style="display: none;">
+            <h2>Book Vehicle</h2>
+            <form id="bookVehicleForm">
+                <input type="hidden" id="vehicleId">
+                <div class="form-group">
+                    <label for="startDate">Start Date:</label>
+                    <input type="datetime-local" id="startDate" name="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date:</label>
+                    <input type="datetime-local" id="endDate" name="endDate" required>
+                </div>
+                <button type="submit" class="btn">Book</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelBooking()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Rent-Ease. All rights reserved.</p>
+        <p><a href="vehicles.html">Contact Us</a></p>
+    </footer>
+
+    <script src="js/vehicles.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
