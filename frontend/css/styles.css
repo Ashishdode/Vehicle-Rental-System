@@ -1,9 +1,9 @@
 :root {
-    --primary: #F77D0A; /* Orange */
-    --secondary: #2B2E4A; /* Dark blue */
-    --light: #F4F5F8; /* Light gray */
-    --dark: #1C1E32; /* Darker shade */
-    --danger: #dc3545; /* Red for cancel buttons */
+    --primary: #F77D0A; 
+    --secondary: #2B2E4A;
+    --light: #F4F5F8; 
+    --dark: #1C1E32;
+    --danger: #dc3545;
 }
 
 ::-webkit-scrollbar {
@@ -12,7 +12,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(69, 69, 69); /* Grey scrollbar */
+    background: rgb(69, 69, 69);
     border-radius: 10px;
 }
 
@@ -30,8 +30,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    width: 100%; /* Ensure the container takes full available width */
-    box-sizing: border-box; /* Prevent padding from affecting width */
+    width: 100%; 
+    box-sizing: border-box;
 }
 
 h1, h2 {
@@ -50,10 +50,9 @@ h2 {
     margin-bottom: 15px;
 }
 
-/* Front Page */
 .front-page {
     position: relative;
-    min-height: calc(100vh - 60px - 80px); /* Adjust for navbar and footer */
+    min-height: calc(100vh - 60px - 80px);
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -171,7 +170,6 @@ h2 {
     }
 }
 
-/* Login Overlay */
 .login-overlay {
     position: fixed;
     top: 0;
@@ -185,7 +183,6 @@ h2 {
     z-index: 1000;
 }
 
-/* Login/Register Card */
 .login-card {
     display: flex;
     max-width: 800px;
@@ -253,7 +250,6 @@ h2 {
     }
 }
 
-/* Navbar */
 .navbar {
     background-color: var(--secondary);
     padding: 15px 20px;
@@ -332,7 +328,6 @@ h2 {
     }
 }
 
-/* Footer */
 .footer {
     background-color: var(--secondary);
     color: var(--light);
@@ -353,7 +348,7 @@ h2 {
     text-decoration: underline;
 }
 
-/* Lists */
+
 .container .vehicle-list, .container .booking-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -403,20 +398,19 @@ h2 {
 /* Media Query for Mobile */
 @media (max-width: 500px) {
     .container {
-        padding: 10px; /* Reduce padding on mobile */
+        padding: 10px;
     }
     .container .vehicle-list, .container .booking-list {
-        grid-template-columns: 1fr; /* Force single column on very narrow screens */
+        grid-template-columns: 1fr;
     }
     .vehicle-card, .booking-card {
         padding: 15px;
     }
     .vehicle-image {
-        height: 120px; /* Reduce image height on mobile */
+        height: 120px;
     }
 }
 
-/* Forms */
 .form-section {
     margin: 20px 0;
 }
@@ -448,10 +442,9 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     max-width: 500px;
-    display: none; /* Ensure form is hidden by default */
+    display: none;
 }
 
-/* Buttons */
 .btn {
     background-color: var(--primary);
     color: white;
@@ -487,7 +480,6 @@ h2 {
     cursor: not-allowed;
 }
 
-/* Messages */
 .message {
     display: none;
     text-align: center;
@@ -501,7 +493,6 @@ h2 {
     text-align: center;
 }
 
-/* Links */
 a {
     color: var(--primary);
     text-decoration: none;

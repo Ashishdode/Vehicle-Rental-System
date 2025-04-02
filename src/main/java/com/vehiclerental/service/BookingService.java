@@ -6,6 +6,9 @@ import com.vehiclerental.model.User;
 import com.vehiclerental.model.Vehicle;
 import com.vehiclerental.repository.BookingRepository;
 import com.vehiclerental.repository.VehicleRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -72,7 +75,7 @@ public class BookingService {
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
-
+    @Transactional
     // Cancel a booking (user-initiated)
     public void cancelBooking(Long bookingId, User user) {
         Booking booking = bookingRepository.findById(bookingId)
@@ -99,7 +102,7 @@ public class BookingService {
 
         // Update vehicle availability
         Vehicle vehicle = booking.getVehicle();
-        if (isVehicleAvailable(vehicle, now, now.plusDays(1))) {
+        if (isVehicleAvailable(vehicle, booking.getStartDate(), booking.getEndDate())) {
             vehicle.setAvailabilityStatus(true);
             vehicleRepository.save(vehicle);
         }

@@ -27,17 +27,17 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    // Update user profile (authenticated)
-    @PutMapping("/{userId}")
-    public ResponseEntity<User> updateProfile(@PathVariable Long userId,
-                                              @RequestBody User updatedUser,
-                                              @RequestHeader("X-User-Id") Long authUserId) {
-        if (!userId.equals(authUserId)) {
-            return ResponseEntity.status(403).build(); // Forbidden
-        }
-        User user = userService.updateProfile(userId, updatedUser);
-        return ResponseEntity.ok(user);
-    }
+    // // Update user profile (authenticated)
+    // @PutMapping("/{userId}")
+    // public ResponseEntity<User> updateProfile(@PathVariable Long userId,
+    //                                           @RequestBody User updatedUser,
+    //                                           @RequestHeader("X-User-Id") Long authUserId) {
+    //     if (!userId.equals(authUserId)) {
+    //         return ResponseEntity.status(403).build(); // Forbidden
+    //     }
+    //     User user = userService.updateProfile(userId, updatedUser);
+    //     return ResponseEntity.ok(user);
+    // }
 }
 
 // Simple DTO for login request

@@ -7,6 +7,7 @@ import com.vehiclerental.model.Vehicle;
 import com.vehiclerental.repository.BookingRepository;
 import com.vehiclerental.repository.VehicleRepository;
 
+import jakarta.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -94,6 +95,7 @@ public class VehicleService {
         return vehicleRepository.save(existingVehicle);
     }
 
+    @Transactional
     // Remove a vehicle (admin only)
 public void removeVehicle(Long vehicleId) {
     Vehicle vehicle = vehicleRepository.findById(vehicleId)
@@ -106,12 +108,15 @@ public void removeVehicle(Long vehicleId) {
 
     boolean hasActiveBooking = bookings.stream().anyMatch(booking ->
             booking.getStatus() == Booking.Status.CONFIRMED &&
-                    now.isAfter(booking.getStartDate()) &&
-                    now.isBefore(booking.getEndDate()));
+            (now.isAfter(booking.getStartDate()) && now.isBefore(booking.getEndDate())|| now.isBefore(booking.getStartDate())));
 
     if (hasActiveBooking) {
-        logger.warn("Cannot remove vehicle {} due to active bookings", vehicleId);
-        throw new IllegalStateException("Cannot remove vehicle with active bookings");
+        logger.warn("Cannot remove vehicle {} due to active bookings or upcoming bookings", vehicleId);
+        throw new IllegalStateException("Cannot remove vehicle with active bookings or upcoming bookings");
+    }
+
+    if (!vehicleRepository.existsById(vehicle.getVehicleId())) {
+        vehicleRepository.save(vehicle);
     }
 
     //Remove past bookings

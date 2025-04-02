@@ -37,7 +37,6 @@ function cancelUpdate() {
     showManageVehicles();
 }
 
-// Override loadVehicles to include images
 async function loadVehicles() {
     const userId = localStorage.getItem("userId");
     if (!userId) {
@@ -77,7 +76,6 @@ async function loadVehicles() {
     }
 }
 
-// Override loadBookings to include images
 async function loadBookings() {
     const userId = localStorage.getItem("userId");
     if (!userId) {
@@ -141,6 +139,8 @@ async function deleteVehicle(vehicleId) {
         window.location.href = "index.html";
         return;
     }
+
+    if (!confirm("Are you sure you want to cancel this booking?")) return;
     try {
         const response = await fetch(`http://localhost:8080/api/vehicles/${vehicleId}`, {
             method: "DELETE",
@@ -148,13 +148,18 @@ async function deleteVehicle(vehicleId) {
                 "X-User-Id": userId,
             },
         });
-        if (!response.ok) throw new Error("Failed to delete vehicle: " + response.statusText);
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || "Failed to delete vehicle");
+        }
+
         alert("Vehicle deleted successfully!");
         loadVehicles();
         showManageVehicles();
     } catch (error) {
-        console.error("Error deleting vehicle:", error);
-        alert("Failed to delete vehicle: " + error.message);
+        console.error("Error deleting vehicle:", error.message);
+        alert(error.message); 
     }
 }
 

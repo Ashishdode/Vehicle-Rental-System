@@ -32,12 +32,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // Update user profile (e.g., email)
-    public User updateProfile(Long userId, User updatedUser) {
-        User existingUser = findById(userId);
-        existingUser.setEmail(updatedUser.getEmail());
-        return userRepository.save(existingUser);
-    }
+    // // Update user profile (e.g., email)
+    // public User updateProfile(Long userId, User updatedUser) {
+    //     User existingUser = findById(userId);
+    //     existingUser.setEmail(updatedUser.getEmail());
+    //     return userRepository.save(existingUser);
+    // }
 
     // Simple login method
     public User login(String username, String password) {
