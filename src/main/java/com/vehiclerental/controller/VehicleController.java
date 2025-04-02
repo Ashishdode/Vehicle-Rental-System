@@ -34,12 +34,6 @@ public class VehicleController {
         return ResponseEntity.ok(vehicles);
     }
 
-    // // Browse vehicles by type (public)
-    // @GetMapping("/type/{type}")
-    // public ResponseEntity<List<Vehicle>> getVehiclesByType(@PathVariable String type) {
-    //     List<Vehicle> vehicles = vehicleService.getVehiclesByType(type);
-    //     return ResponseEntity.ok(vehicles);
-    // }
 
     // Add a vehicle (admin only)
     @PostMapping
