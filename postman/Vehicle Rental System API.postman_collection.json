@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "833c2faf-f5c0-401f-9ee8-076bb5a7b3c2",
+		"name": "Vehicle Rental System API",
+		"description": "Postman Collection for testing the Vehicle Rental System API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34578408"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"john_doe\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						},
+						"description": "Authenticate a user and return their userId and role."
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"USER\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						},
+						"description": "Register a new user."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "Get All Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						},
+						"description": "Fetch all vehicles."
+					},
+					"response": []
+				},
+				{
+					"name": "Add Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "{{adminUserId}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Toyota Camry\",\n  \"type\": \"car\",\n  \"description\": \"A reliable sedan\",\n  \"availabilityStatus\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						},
+						"description": "Add a new vehicle (admin only)."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vehicle",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "{{adminUserId}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"vehicleId\": {{vehicleId}},\n  \"name\": \"Toyota Camry\",\n  \"type\": \"car\",\n  \"description\": \"A reliable sedan\",\n  \"availabilityStatus\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles/{{vehicleId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles",
+								"{{vehicleId}}"
+							]
+						},
+						"description": "Update a vehicle (admin only)."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vehicle",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-User-Id",
+								"value": "{{adminUserId}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles/{{vehicleId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles",
+								"{{vehicleId}}"
+							]
+						},
+						"description": "Delete a vehicle (admin only)."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bookings for Vehicle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/bookings/vehicle/{{vehicleId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"vehicle",
+								"{{vehicleId}}"
+							]
+						},
+						"description": "Fetch bookings for a specific vehicle to check availability."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Get All Bookings (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-User-Id",
+								"value": "{{adminUserId}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/bookings/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"all"
+							]
+						},
+						"description": "Fetch all bookings (admin only)."
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Bookings (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-User-Id",
+								"value": "{{userId}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/bookings/my-bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"my-bookings"
+							]
+						},
+						"description": "Fetch bookings for the logged-in user."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "{{userId}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "vehicleId",
+									"value": "{{vehicleId}}",
+									"type": "text"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-04-01T10:00:00",
+									"type": "text"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-04-02T10:00:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings"
+							]
+						},
+						"description": "Create a new booking."
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Booking",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-User-Id",
+								"value": "{{userId}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/bookings/{{bookingId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookings",
+								"{{bookingId}}"
+							]
+						},
+						"description": "Cancel a booking."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "adminUserId",
+			"value": "1"
+		},
+		{
+			"key": "userId",
+			"value": "2"
+		},
+		{
+			"key": "vehicleId",
+			"value": "1"
+		},
+		{
+			"key": "bookingId",
+			"value": "1"
+		}
+	]
+}
