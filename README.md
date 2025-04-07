@@ -53,3 +53,8 @@ The backend requires a configuration file to connect to the PostgreSQL database.
     - `spring.datasource.url=jdbc:postgresql://localhost:5432/vehicle_rental_db`
     - `spring.datasource.username=postgres`
     - `spring.datasource.password=your_password`
+    - `spring.datasource.driver-class-name=org.postgresql.Driver`
+    - `spring.jpa.hibernate.ddl-auto=update`
+    - `spring.jpa.properties.hibernate.jdbc.time_zone=UTC`
+
+
