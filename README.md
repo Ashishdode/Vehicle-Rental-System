@@ -10,7 +10,7 @@ A web application for renting vehicles, built with Spring Boot (backend) and HTM
   - `register.html`: User registration page.
   - `vehicles.html`: Page to view and book available vehicles.
 - `src/`: Contains the Spring Boot backend (Java code).
-- `docs/`: Contains documentation files.
+- `postman/`: Contains postman collection.
 
 ## Prerequisites
 - Java 17 or higher
